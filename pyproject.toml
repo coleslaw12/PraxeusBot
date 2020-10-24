@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "repl_python3_Mod-Bot"
-version = "0.1.0"
-description = ""
-authors = ["repl.it user <replituser@example.com>"]
+name = "Praxeus"
+version = "0.0.1"
+description = "A full fledged moderation bot."
+authors = ["Salem4874"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
