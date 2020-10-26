@@ -49,10 +49,17 @@ async def server(ctx):
 
 @client.command()
 async def about(ctx):
-    await ctx.send(
-        'Hello im Praxeus, a Discord Moderation bot by: <@345321888806862858>. \n > I am currently under the works and using the `server` command will allow you to help me! \n Hope you enjoy! Code collaborated upon by <@345321888806862858> and source code by <@738604939957239930>! '
-    )
+    embed = discord.Embed(Title="About:", description="Hello im Praxeus, a Discord Moderation bot. > I am currently under the works and using the `p!server` command will allow you to help me!", color=0x90c4ff, inline=True)
 
+    embed.add_field(name="Version:", value="Alpha V. 0.0.1")
+
+    embed.add_field(name="github", value="[Github Repository](https://github.com/coleslaw12/PraxeusBot)")
+
+    embed.add_field(name="Creator", value="<@345321888806862858>")
+
+    embed.add_field(name="Source Code Creator", value="<@738604939957239930>")
+
+    await ctx.send(embed=embed)
 
 @client.command()
 async def mute(ctx, member: discord.Member = None, *, reason):
@@ -66,6 +73,17 @@ async def mute(ctx, member: discord.Member = None, *, reason):
     await ctx.send(
         f"{member} was muted by {ctx.message.author}\n**Reason**: {reason}.")
 
+@client.command(pass_context=True)
+@commands.has_permissions(administrator=True)
+async def purge(ctx, limit: int):
+  await ctx.channel.purge(limit=limit)
+  await ctx.send('Cleared by {}'.format(ctx.author.mention))
+  await ctx.message.delete()
+
+@purge.error
+async def clear_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("You cant do that!")
 
 @client.command()
 async def unmute(ctx, member: discord.Member = None, *, reason):
@@ -83,14 +101,12 @@ async def unmute(ctx, member: discord.Member = None, *, reason):
         color=0x90c4ff)
     await ctx.send(embed=embed)
 
-
 with open('reports.json', encoding='utf-8') as f:
     try:
         report = json.load(f)
     except ValueError:
         report = {}
         report['users'] = []
-
 
 @client.command(pass_context=True)
 @commands.has_permissions(kick_members=True)
@@ -116,9 +132,8 @@ async def warn(ctx, user: discord.User, *reason: str):
         embed = discord.Embed(
             title="Warn",
             description=f"{user.name} has been warned for {reason}",
-            color=0xE75480)
+            color=0x90c4ff)
         await ctx.send(embed=embed)
-
 
 @client.command(pass_context=True)
 @commands.has_permissions(kick_members=True)
@@ -132,12 +147,11 @@ async def warns(ctx, user: discord.User):
                 title="Warnings",
                 description=
                 f"{user.name} has been reported {len  (current_user['reasons'])} times : {','.join(current_user['reasons'])}",
-                color=0xE75480)
+                color=0x90c4ff)
             await ctx.send(embed=embed)
             break
     else:
         await ctx.send(f"{user.name} has never been reported")
-
 
 @client.command()
 async def invite(ctx):
@@ -147,7 +161,6 @@ async def invite(ctx):
         f'Add me to your server! Here: https://discord.com/api/oauth2/authorize?client_id=769003566773567519&permissions=470150342&scope=bot',
         color=0x90c4ff)
     await ctx.send(embed=embed)
-
 
 @client.command()
 @commands.cooldown(1, 7, commands.BucketType.user)
@@ -163,13 +176,12 @@ async def help(ctx):
 
     await ctx.send(embed=embed)
 
-
-@client.command()
+@client.command(aliases=["m"])
 @commands.cooldown(1, 7, commands.BucketType.user)
 async def moderation(ctx):
     embed = discord.Embed(
         title="Moderation Commands",
-        description="The following commands are used for Moderation.")
+        description="The following commands are used for Moderation.", color=0x90c4ff)
 
     embed.add_field(name="Kick", value="Kicks a user from the server.")
 
@@ -188,13 +200,12 @@ async def moderation(ctx):
 
     await ctx.send(embed=embed)
 
-
-@client.command()
+@client.command(aliases=["u"])
 @commands.cooldown(1, 7, commands.BucketType.user)
 async def utility(ctx):
     embed = discord.Embed(
         title="Utility Commands",
-        description="The following commands are used for Utility Options.")
+        description="The following commands are used for Utility Options.", color=0x90c4ff)
 
     embed.add_field(name="Help", value="Displays this menu.")
 
@@ -210,12 +221,15 @@ async def utility(ctx):
 
     await ctx.send(embed=embed)
 
-
 @client.event
 async def on_command_error(ctx, error):
-    await ctx.send(
-        f'An error has occured, if you think this is a mistake, try `!!help or !!server to speak with our support team!` ```Console Log: {error}```'
-    )
+    embed = discord.Embed(
+        title=f'A{random.randint(0, 200)}, An ERROR has occured.',
+        description=
+        f'```#An error has occured, if you think this is a mistake, try `!!help or !!server to speak with our support team!``` ```Console Log: {error}```', color=0xff4040)
+    await ctx.send(embed=embed)
+
+
 
 
 client.run(os.getenv('TOKEN'))
