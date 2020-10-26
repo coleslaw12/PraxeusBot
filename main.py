@@ -49,11 +49,11 @@ async def server(ctx):
 
 @client.command()
 async def about(ctx):
-    embed = discord.Embed(Title="About:", description="Hello im Praxeus, a Discord Moderation bot. > I am currently under the works and using the `p!server` command will allow you to help me!", color=0x90c4ff, inline=True)
+    embed = discord.Embed(Title="About:", description="Hello im Praxeus, a Discord Moderation bot. > I am currently under the works and using the `p!server` command will allow you to help me!", color=0x90c4ff)
 
     embed.add_field(name="Version:", value="Alpha V. 0.0.1", inline=False)
 
-    embed.add_field(name="github", value="[Github Repository](https://github.com/coleslaw12/PraxeusBot)", inline=False)
+    embed.add_field(name="Github", value="[Github Repository](https://github.com/coleslaw12/PraxeusBot)", inline=False)
 
     embed.add_field(name="Creator", value="<@345321888806862858>", inline=False)
 
@@ -168,11 +168,11 @@ async def help(ctx):
     embed = discord.Embed(
         title="Help", description="Help menu", color=0x90c4ff, Inline=True)
 
-    embed.add_field(name="Version", value="0.0.1 Alpha", inline=True)
+    embed.add_field(name="Version", value="0.0.1 Alpha", inline=False)
 
-    embed.add_field(name="Moderation", value="Displays Moderation commands.", inline=True)
+    embed.add_field(name="Moderation", value="Displays Moderation commands.", inline=False)
 
-    embed.add_field(name="Utility", value="Displays Utility Commands.", inline=True)
+    embed.add_field(name="Utility", value="Displays Utility Commands.", inline=False)
 
     await ctx.send(embed=embed)
 
@@ -183,20 +183,20 @@ async def moderation(ctx):
         title="Moderation Commands",
         description="The following commands are used for Moderation.", color=0x90c4ff)
 
-    embed.add_field(name="Kick", value="Kicks a user from the server.")
+    embed.add_field(name="Kick", value="Kicks a user from the server.", inline=False)
 
-    embed.add_field(name="Ban", value="Bans a user from the server.")
+    embed.add_field(name="Ban", value="Bans a user from the server.", inline=False)
 
     embed.add_field(
         name="Mute",
-        value="Mutes the user for 2 hours(This is not currently editable).")
+        value="Mutes the user for 2 hours(This is not currently editable).", inline=False)
 
-    embed.add_field(name="Unmute", value="Unmutes a specified user.")
+    embed.add_field(name="Unmute", value="Unmutes a specified user.", inline=False)
 
     embed.add_field(
-        name="Warn", value="Warns the specified user for a specified reason.")
+        name="Warn", value="Warns the specified user for a specified reason.", inline=False)
 
-    embed.add_field(name="Warns", value="Shows all the warnings for a user.")
+    embed.add_field(name="Warns", value="Shows all the warnings for a user.", inline=False)
 
     await ctx.send(embed=embed)
 
@@ -207,17 +207,17 @@ async def utility(ctx):
         title="Utility Commands",
         description="The following commands are used for Utility Options.", color=0x90c4ff)
 
-    embed.add_field(name="Help", value="Displays this menu.")
+    embed.add_field(name="Help", value="Displays this menu.", inline=False)
 
     embed.add_field(
         name="Invite",
-        value="Sends the invite to the Praxeus Developement server.")
+        value="Sends the invite to the Praxeus Developement server.", inline=False)
 
-    embed.add_field(name="Role", value="Gives a specified role to a user.")
+    embed.add_field(name="Role", value="Gives a specified role to a user.", inline=False)
 
-    embed.add_field(name="Server", value="Gives the dev server invite.")
+    embed.add_field(name="Server", value="Gives the dev server invite.", inline=False)
 
-    embed.add_field(name="About", value="Shows the about menu for the bot!")
+    embed.add_field(name="About", value="Shows the about menu for the bot!", inline=False)
 
     await ctx.send(embed=embed)
 
