@@ -46,6 +46,13 @@ async def ban(ctx, user: discord.Member, *, reason):
 async def server(ctx):
     await ctx.send('Our Developement Server: discord.gg/KNNSf9q')
 
+@client.command(pass_context=True)
+@commands.has_permissions(kick_members=True)
+async def role(ctx, user: discord.Member, role: discord.Role):
+    await user.add_roles(role)
+    embed = discord.Embed(title="Role Granted", description=f'{user.mention} was given {role.mention} by {ctx.author.mention}', color=0x90c4ff)
+    await ctx.send(embed=embed) 
+
 
 @client.command()
 async def about(ctx):
