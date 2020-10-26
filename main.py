@@ -170,9 +170,9 @@ async def help(ctx):
 
     embed.add_field(name="Version", value="0.0.1 Alpha", inline=False)
 
-    embed.add_field(name="Moderation", value="Displays Moderation commands.", inline=False)
+    embed.add_field(name="Moderation", value="Displays Moderation commands. **Command:** `p!moderation` or `p!m`", inline=False)
 
-    embed.add_field(name="Utility", value="Displays Utility Commands.", inline=False)
+    embed.add_field(name="Utility", value="Displays Utility Commands. **Command:** `p!utility` or `p!u`", inline=False)
 
     await ctx.send(embed=embed)
 
@@ -183,20 +183,20 @@ async def moderation(ctx):
         title="Moderation Commands",
         description="The following commands are used for Moderation.", color=0x90c4ff)
 
-    embed.add_field(name="Kick", value="Kicks a user from the server.", inline=False)
+    embed.add_field(name="Kick", value="Kicks a user from the server. **Command:** `p!kick`", inline=False)
 
-    embed.add_field(name="Ban", value="Bans a user from the server.", inline=False)
+    embed.add_field(name="Ban", value="Bans a user from the server. **Command:** `p!ban`", inline=False)
 
     embed.add_field(
         name="Mute",
-        value="Mutes the user for 2 hours(This is not currently editable).", inline=False)
+        value="Mutes the user for 2 hours(This is not currently editable) **Command:** `p!mute`.", inline=False)
 
-    embed.add_field(name="Unmute", value="Unmutes a specified user.", inline=False)
+    embed.add_field(name="Unmute", value="Unmutes a specified user. **Command:** `p!unmute`", inline=False)
 
     embed.add_field(
-        name="Warn", value="Warns the specified user for a specified reason.", inline=False)
+        name="Warn", value="Warns the specified user for a specified reason. **Command:** `p!warn`", inline=False)
 
-    embed.add_field(name="Warns", value="Shows all the warnings for a user.", inline=False)
+    embed.add_field(name="Warns", value="Shows all the warnings for a user. **Command:** `p!warns`", inline=False)
 
     await ctx.send(embed=embed)
 
@@ -211,13 +211,13 @@ async def utility(ctx):
 
     embed.add_field(
         name="Invite",
-        value="Sends the invite to the Praxeus Developement server.", inline=False)
+        value="Sends the invite to the Praxeus Developement server. **Command:** `p!invite`", inline=False)
 
-    embed.add_field(name="Role", value="Gives a specified role to a user.", inline=False)
+    embed.add_field(name="Role", value="Gives a specified role to a user. **Command:** `p!role`", inline=False)
 
-    embed.add_field(name="Server", value="Gives the dev server invite.", inline=False)
+    embed.add_field(name="Server", value="Gives the dev server invite. **Command:** `p!role`", inline=False)
 
-    embed.add_field(name="About", value="Shows the about menu for the bot!", inline=False)
+    embed.add_field(name="About", value="Shows the about menu for the bot! **Command:** `p!role`", inline=False)
 
     await ctx.send(embed=embed)
 
