@@ -51,13 +51,13 @@ async def server(ctx):
 async def about(ctx):
     embed = discord.Embed(Title="About:", description="Hello im Praxeus, a Discord Moderation bot. > I am currently under the works and using the `p!server` command will allow you to help me!", color=0x90c4ff, inline=True)
 
-    embed.add_field(name="Version:", value="Alpha V. 0.0.1")
+    embed.add_field(name="Version:", value="Alpha V. 0.0.1", inline=False)
 
-    embed.add_field(name="github", value="[Github Repository](https://github.com/coleslaw12/PraxeusBot)")
+    embed.add_field(name="github", value="[Github Repository](https://github.com/coleslaw12/PraxeusBot)", inline=False)
 
-    embed.add_field(name="Creator", value="<@345321888806862858>")
+    embed.add_field(name="Creator", value="<@345321888806862858>", inline=False)
 
-    embed.add_field(name="Source Code Creator", value="<@738604939957239930>")
+    embed.add_field(name="Source Code Creator", value="<@738604939957239930>", inline=False)
 
     await ctx.send(embed=embed)
 
